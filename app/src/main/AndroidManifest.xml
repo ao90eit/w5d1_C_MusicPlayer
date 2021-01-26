@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <service android:name=".NormalService" />
+        <service android:name=".BoundService" />
     </application>
 
 </manifest>

@@ -13,16 +13,10 @@ class BoundService : Service() {
     override fun onCreate() {
         super.onCreate()
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.dialup)
+        mediaPlayer = MediaPlayer.create(this, R.raw.farts1)
     }
 
-    // onStartCommand called only by and Intent Service
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        mediaPlayer.start()
-
-        // keep this - but why?
-        return super.onStartCommand(intent, flags, startId)
-    }
+    // NOTE: onStartCommand not called by a bound service
 
     override fun onDestroy() {
         super.onDestroy()
@@ -41,6 +35,7 @@ class BoundService : Service() {
 
     fun stopSong() {
         mediaPlayer.stop()
+        mediaPlayer.prepare()
     }
 
     override fun onBind(intent: Intent?): IBinder {
